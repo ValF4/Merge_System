@@ -181,185 +181,6 @@ export type ScreenController = {
 	Attributes: { [string]: any },
 }
 
-export type BushComponent = {
-	ID: string,
-	Type: Type,
-	EncounterService: EncounterService,
-	OnEnter: (self: BushComponent, callback: callbackZone) -> (),
-	OnExit: (self: BushComponent, callback: callbackZone) -> (),
-	ObserverPlayersInPart: (self: BushComponent, config: PlayerZoneConfig) -> any,
-	Extend: (self: BushComponent, id: "ZoneComponent" | "PlayerZoneComponent" | "RegionComponent") -> BushComponent,
-	Import: ComponentImportFn,
-	OnInit: (self: BushComponent, cb: (self: BushComponent) -> ()) -> BushComponent,
-	OnStart: (self: BushComponent, cb: (self: BushComponent) -> ()) -> BushComponent,
-	OnSimulation: (self: BushComponent, cb: (self: BushComponent) -> (), frequency: Enum.StepFrequency?, priority: number?) -> BushComponent,
-	OnDestroy: (self: BushComponent, cb: (self: BushComponent) -> ()) -> BushComponent,
-	Tag: (self: BushComponent, tag: string) -> BushComponent,
-	ClassName: (self: BushComponent, className: string) -> BushComponent,
-	AttributeDefaults: (self: BushComponent, schema: { [string]: any }) -> BushComponent,
-	Children: (self: BushComponent, children: { string }) -> BushComponent,
-	GetAllComponents: (self: BushComponent, id: string) -> any,
-	GetComponent: (self: BushComponent, instance: Instance, id: string) -> any,
-	_doCleanup: (self: BushComponent) -> (),
-	New: (self: BushComponent, ID: string, Type: Type) -> BushComponent,
-	Cleanup: <T>(self: any, task: T) -> T,
-	Network: Network,
-	Promise: Promise,
-	GlobalClock: GlobalClock,
-	Signal: Signal,
-	Attributes: { [string]: any },
-	Instance: Instance,
-}
-
-export type ZoneComponent = {
-	ID: string,
-	Type: Type,
-	ZoneService: ZoneService,
-	OnEnter: (self: ZoneComponent, callback: callbackZone) -> (),
-	OnExit: (self: ZoneComponent, callback: callbackZone) -> (),
-	ObserverPlayersInPart: (self: ZoneComponent, config: PlayerZoneConfig) -> any,
-	Extend: (self: ZoneComponent, id: "BushComponent" | "PlayerZoneComponent" | "RegionComponent") -> ZoneComponent,
-	Import: ComponentImportFn,
-	OnInit: (self: ZoneComponent, cb: (self: ZoneComponent) -> ()) -> ZoneComponent,
-	OnStart: (self: ZoneComponent, cb: (self: ZoneComponent) -> ()) -> ZoneComponent,
-	OnSimulation: (self: ZoneComponent, cb: (self: ZoneComponent) -> (), frequency: Enum.StepFrequency?, priority: number?) -> ZoneComponent,
-	OnDestroy: (self: ZoneComponent, cb: (self: ZoneComponent) -> ()) -> ZoneComponent,
-	Tag: (self: ZoneComponent, tag: string) -> ZoneComponent,
-	ClassName: (self: ZoneComponent, className: string) -> ZoneComponent,
-	AttributeDefaults: (self: ZoneComponent, schema: { [string]: any }) -> ZoneComponent,
-	Children: (self: ZoneComponent, children: { string }) -> ZoneComponent,
-	GetAllComponents: (self: ZoneComponent, id: string) -> any,
-	GetComponent: (self: ZoneComponent, instance: Instance, id: string) -> any,
-	_doCleanup: (self: ZoneComponent) -> (),
-	New: (self: ZoneComponent, ID: string, Type: Type) -> ZoneComponent,
-	Cleanup: <T>(self: any, task: T) -> T,
-	Network: Network,
-	Promise: Promise,
-	GlobalClock: GlobalClock,
-	Signal: Signal,
-	Attributes: { [string]: any },
-	Instance: Instance,
-}
-
-export type BattleService = {
-	ID: string,
-	Type: Type,
-	Extend: (self: BattleService, id: "CombatService" | "EncounterService" | "LeaderstatsService" | "PlayerService" | "ProfileService" | "ZoneService") -> BattleService,
-	Import: ServiceImportFn,
-	OnInit: (self: BattleService, cb: (self: BattleService) -> ()) -> BattleService,
-	OnStart: (self: BattleService, cb: (self: BattleService) -> ()) -> BattleService,
-	OnSimulation: (self: BattleService, cb: (self: BattleService) -> (), frequency: Enum.StepFrequency?, priority: number?) -> BattleService,
-	OnDestroy: (self: BattleService, cb: (self: BattleService) -> ()) -> BattleService,
-	Tag: (self: BattleService, tag: string) -> BattleService,
-	ClassName: (self: BattleService, className: string) -> BattleService,
-	AttributeDefaults: (self: BattleService, schema: { [string]: any }) -> BattleService,
-	Children: (self: BattleService, children: { string }) -> BattleService,
-	GetAllComponents: (self: BattleService, id: string) -> any,
-	GetComponent: (self: BattleService, instance: Instance, id: string) -> any,
-	_doCleanup: (self: BattleService) -> (),
-	New: (self: BattleService, ID: string, Type: Type) -> BattleService,
-	Cleanup: <T>(self: any, task: T) -> T,
-	Network: Network,
-	Promise: Promise,
-	GlobalClock: GlobalClock,
-	Signal: Signal,
-	Attributes: { [string]: any },
-}
-
-export type CombatService = {
-	ID: string,
-	Type: Type,
-	PlayerService: PlayerService,
-	OnPlayerAdded: (self: CombatService, callback: (Player: Player) -> ()) -> (),
-	OnPlayerRemoved: (self: CombatService, callback: (Player: Player) -> ()) -> (),
-	OnCharacterAdded: (self: CombatService, callback: (Character: R6, Player: Player) -> ()) -> (),
-	OnCharacterRemoved: (self: CombatService, callback: (Character: R6, Player: Player) -> ()) -> (),
-	Extend: (self: CombatService, id: "BattleService" | "EncounterService" | "LeaderstatsService" | "PlayerService" | "ProfileService" | "ZoneService") -> CombatService,
-	Import: ServiceImportFn,
-	OnInit: (self: CombatService, cb: (self: CombatService) -> ()) -> CombatService,
-	OnStart: (self: CombatService, cb: (self: CombatService) -> ()) -> CombatService,
-	OnSimulation: (self: CombatService, cb: (self: CombatService) -> (), frequency: Enum.StepFrequency?, priority: number?) -> CombatService,
-	OnDestroy: (self: CombatService, cb: (self: CombatService) -> ()) -> CombatService,
-	Tag: (self: CombatService, tag: string) -> CombatService,
-	ClassName: (self: CombatService, className: string) -> CombatService,
-	AttributeDefaults: (self: CombatService, schema: { [string]: any }) -> CombatService,
-	Children: (self: CombatService, children: { string }) -> CombatService,
-	GetAllComponents: (self: CombatService, id: string) -> any,
-	GetComponent: (self: CombatService, instance: Instance, id: string) -> any,
-	_doCleanup: (self: CombatService) -> (),
-	New: (self: CombatService, ID: string, Type: Type) -> CombatService,
-	Cleanup: <T>(self: any, task: T) -> T,
-	Network: Network,
-	Promise: Promise,
-	GlobalClock: GlobalClock,
-	Signal: Signal,
-	Attributes: { [string]: any },
-}
-
-export type EncounterService = {
-	ID: string,
-	Type: Type,
-	PlayerService: PlayerService,
-	ProfileService: ProfileService,
-	CombatService: CombatService,
-	SelectOpponent: (self: EncounterService, Player: Player) -> (),
-	RollChance: (self: EncounterService, Player: Player) -> (),
-	AddPlayer: (self: EncounterService, Player: Player, Zone: Instance) -> (),
-	RemovePlayer: (self: EncounterService, Player: Player, Zone: Instance) -> any,
-	StartThread: (self: EncounterService) -> (),
-	InZone: { [Player]: { [Instance]: boolean } },
-	Extend: (self: EncounterService, id: "BattleService" | "CombatService" | "LeaderstatsService" | "PlayerService" | "ProfileService" | "ZoneService") -> EncounterService,
-	Import: ServiceImportFn,
-	OnInit: (self: EncounterService, cb: (self: EncounterService) -> ()) -> EncounterService,
-	OnStart: (self: EncounterService, cb: (self: EncounterService) -> ()) -> EncounterService,
-	OnSimulation: (self: EncounterService, cb: (self: EncounterService) -> (), frequency: Enum.StepFrequency?, priority: number?) -> EncounterService,
-	OnDestroy: (self: EncounterService, cb: (self: EncounterService) -> ()) -> EncounterService,
-	Tag: (self: EncounterService, tag: string) -> EncounterService,
-	ClassName: (self: EncounterService, className: string) -> EncounterService,
-	AttributeDefaults: (self: EncounterService, schema: { [string]: any }) -> EncounterService,
-	Children: (self: EncounterService, children: { string }) -> EncounterService,
-	GetAllComponents: (self: EncounterService, id: string) -> any,
-	GetComponent: (self: EncounterService, instance: Instance, id: string) -> any,
-	_doCleanup: (self: EncounterService) -> (),
-	New: (self: EncounterService, ID: string, Type: Type) -> EncounterService,
-	Cleanup: <T>(self: any, task: T) -> T,
-	Network: Network,
-	Promise: Promise,
-	GlobalClock: GlobalClock,
-	Signal: Signal,
-	Attributes: { [string]: any },
-}
-
-export type LeaderstatsService = {
-	ID: string,
-	Type: Type,
-	ProfileService: ProfileService,
-	OnPlayerAdded: (self: LeaderstatsService, callback: (Player: Player) -> ()) -> (),
-	OnPlayerRemoved: (self: LeaderstatsService, callback: (Player: Player) -> ()) -> (),
-	OnCharacterAdded: (self: LeaderstatsService, callback: (Character: R6, Player: Player) -> ()) -> (),
-	OnCharacterRemoved: (self: LeaderstatsService, callback: (Character: R6, Player: Player) -> ()) -> (),
-	Extend: (self: LeaderstatsService, id: "BattleService" | "CombatService" | "EncounterService" | "PlayerService" | "ProfileService" | "ZoneService") -> LeaderstatsService,
-	Import: ServiceImportFn,
-	OnInit: (self: LeaderstatsService, cb: (self: LeaderstatsService) -> ()) -> LeaderstatsService,
-	OnStart: (self: LeaderstatsService, cb: (self: LeaderstatsService) -> ()) -> LeaderstatsService,
-	OnSimulation: (self: LeaderstatsService, cb: (self: LeaderstatsService) -> (), frequency: Enum.StepFrequency?, priority: number?) -> LeaderstatsService,
-	OnDestroy: (self: LeaderstatsService, cb: (self: LeaderstatsService) -> ()) -> LeaderstatsService,
-	Tag: (self: LeaderstatsService, tag: string) -> LeaderstatsService,
-	ClassName: (self: LeaderstatsService, className: string) -> LeaderstatsService,
-	AttributeDefaults: (self: LeaderstatsService, schema: { [string]: any }) -> LeaderstatsService,
-	Children: (self: LeaderstatsService, children: { string }) -> LeaderstatsService,
-	GetAllComponents: (self: LeaderstatsService, id: string) -> any,
-	GetComponent: (self: LeaderstatsService, instance: Instance, id: string) -> any,
-	_doCleanup: (self: LeaderstatsService) -> (),
-	New: (self: LeaderstatsService, ID: string, Type: Type) -> LeaderstatsService,
-	Cleanup: <T>(self: any, task: T) -> T,
-	Network: Network,
-	Promise: Promise,
-	GlobalClock: GlobalClock,
-	Signal: Signal,
-	Attributes: { [string]: any },
-}
-
 export type PlayerService = {
 	ID: string,
 	Type: Type,
@@ -367,7 +188,7 @@ export type PlayerService = {
 	OnPlayerRemoved: (self: PlayerService, callback: (Player: Player) -> ()) -> (),
 	OnCharacterAdded: (self: PlayerService, callback: (Character: R6, Player: Player) -> ()) -> (),
 	OnCharacterRemoved: (self: PlayerService, callback: (Character: R6, Player: Player) -> ()) -> (),
-	Extend: (self: PlayerService, id: "BattleService" | "CombatService" | "EncounterService" | "LeaderstatsService" | "ProfileService" | "ZoneService") -> PlayerService,
+	Extend: (self: PlayerService, id: "ProfileService" | "testeService") -> PlayerService,
 	Import: ServiceImportFn,
 	OnInit: (self: PlayerService, cb: (self: PlayerService) -> ()) -> PlayerService,
 	OnStart: (self: PlayerService, cb: (self: PlayerService) -> ()) -> PlayerService,
@@ -405,7 +226,7 @@ export type ProfileService = {
 	Profiles: { [Player]: any },
 	OnUpdateData: Signal,
 	OnUpdateKey: Signal,
-	Extend: (self: ProfileService, id: "BattleService" | "CombatService" | "EncounterService" | "LeaderstatsService" | "PlayerService" | "ZoneService") -> ProfileService,
+	Extend: (self: ProfileService, id: "PlayerService" | "testeService") -> ProfileService,
 	Import: ServiceImportFn,
 	OnInit: (self: ProfileService, cb: (self: ProfileService) -> ()) -> ProfileService,
 	OnStart: (self: ProfileService, cb: (self: ProfileService) -> ()) -> ProfileService,
@@ -427,32 +248,28 @@ export type ProfileService = {
 	Attributes: { [string]: any },
 }
 
-export type ZoneService = {
+export type testeService = {
 	ID: string,
 	Type: Type,
-	ProfileService: ProfileService,
-	OnPlayerAdded: (self: ZoneService, callback: (Player: Player) -> ()) -> (),
-	OnPlayerRemoved: (self: ZoneService, callback: (Player: Player) -> ()) -> (),
-	OnCharacterAdded: (self: ZoneService, callback: (Character: R6, Player: Player) -> ()) -> (),
-	OnCharacterRemoved: (self: ZoneService, callback: (Character: R6, Player: Player) -> ()) -> (),
-	ChangePlayerZone: (self: ZoneService, Player: Player, Zone: any) -> (),
-	ChangePlayerSafeZone: (self: ZoneService, Player: Player, Zone: any) -> (),
-	zonePlayers: { [Player]: string },
-	safezonePlayers: { [Player]: string },
-	Extend: (self: ZoneService, id: "BattleService" | "CombatService" | "EncounterService" | "LeaderstatsService" | "PlayerService" | "ProfileService") -> ZoneService,
+	PlayerService: PlayerService,
+	OnPlayerAdded: (self: testeService, callback: (Player: Player) -> ()) -> (),
+	OnPlayerRemoved: (self: testeService, callback: (Player: Player) -> ()) -> (),
+	OnCharacterAdded: (self: testeService, callback: (Character: R6, Player: Player) -> ()) -> (),
+	OnCharacterRemoved: (self: testeService, callback: (Character: R6, Player: Player) -> ()) -> (),
+	Extend: (self: testeService, id: "PlayerService" | "ProfileService") -> testeService,
 	Import: ServiceImportFn,
-	OnInit: (self: ZoneService, cb: (self: ZoneService) -> ()) -> ZoneService,
-	OnStart: (self: ZoneService, cb: (self: ZoneService) -> ()) -> ZoneService,
-	OnSimulation: (self: ZoneService, cb: (self: ZoneService) -> (), frequency: Enum.StepFrequency?, priority: number?) -> ZoneService,
-	OnDestroy: (self: ZoneService, cb: (self: ZoneService) -> ()) -> ZoneService,
-	Tag: (self: ZoneService, tag: string) -> ZoneService,
-	ClassName: (self: ZoneService, className: string) -> ZoneService,
-	AttributeDefaults: (self: ZoneService, schema: { [string]: any }) -> ZoneService,
-	Children: (self: ZoneService, children: { string }) -> ZoneService,
-	GetAllComponents: (self: ZoneService, id: string) -> any,
-	GetComponent: (self: ZoneService, instance: Instance, id: string) -> any,
-	_doCleanup: (self: ZoneService) -> (),
-	New: (self: ZoneService, ID: string, Type: Type) -> ZoneService,
+	OnInit: (self: testeService, cb: (self: testeService) -> ()) -> testeService,
+	OnStart: (self: testeService, cb: (self: testeService) -> ()) -> testeService,
+	OnSimulation: (self: testeService, cb: (self: testeService) -> (), frequency: Enum.StepFrequency?, priority: number?) -> testeService,
+	OnDestroy: (self: testeService, cb: (self: testeService) -> ()) -> testeService,
+	Tag: (self: testeService, tag: string) -> testeService,
+	ClassName: (self: testeService, className: string) -> testeService,
+	AttributeDefaults: (self: testeService, schema: { [string]: any }) -> testeService,
+	Children: (self: testeService, children: { string }) -> testeService,
+	GetAllComponents: (self: testeService, id: string) -> any,
+	GetComponent: (self: testeService, instance: Instance, id: string) -> any,
+	_doCleanup: (self: testeService) -> (),
+	New: (self: testeService, ID: string, Type: Type) -> testeService,
 	Cleanup: <T>(self: any, task: T) -> T,
 	Network: Network,
 	Promise: Promise,
@@ -467,7 +284,7 @@ export type PlayerZoneComponent = {
 	OnEnter: (self: PlayerZoneComponent, callback: callbackZone) -> (),
 	OnExit: (self: PlayerZoneComponent, callback: callbackZone) -> (),
 	ObserverPlayersInPart: (self: PlayerZoneComponent, config: PlayerZoneConfig) -> any,
-	Extend: (self: PlayerZoneComponent, id: "BushComponent" | "ZoneComponent" | "RegionComponent") -> PlayerZoneComponent,
+	Extend: (self: PlayerZoneComponent, id: "RegionComponent") -> PlayerZoneComponent,
 	Import: ComponentImportFn,
 	OnInit: (self: PlayerZoneComponent, cb: (self: PlayerZoneComponent) -> ()) -> PlayerZoneComponent,
 	OnStart: (self: PlayerZoneComponent, cb: (self: PlayerZoneComponent) -> ()) -> PlayerZoneComponent,
@@ -496,7 +313,7 @@ export type RegionComponent = {
 	OnEnter: (self: RegionComponent, callback: callbackZone) -> (),
 	OnExit: (self: RegionComponent, callback: callbackZone) -> (),
 	ObserverPlayersInPart: (self: RegionComponent, config: PlayerZoneConfig) -> any,
-	Extend: (self: RegionComponent, id: "BushComponent" | "ZoneComponent" | "PlayerZoneComponent") -> RegionComponent,
+	Extend: (self: RegionComponent, id: "PlayerZoneComponent") -> RegionComponent,
 	Import: ComponentImportFn,
 	OnInit: (self: RegionComponent, cb: (self: RegionComponent) -> ()) -> RegionComponent,
 	OnStart: (self: RegionComponent, cb: (self: RegionComponent) -> ()) -> RegionComponent,
@@ -522,13 +339,9 @@ export type RegionComponent = {
 --> IMPORT FUNCTIONS
 
 export type ServiceImportFn =
-	((self: any, id: "BattleService", scopeKey: string?) -> BattleService) &
-	((self: any, id: "CombatService", scopeKey: string?) -> CombatService) &
-	((self: any, id: "EncounterService", scopeKey: string?) -> EncounterService) &
-	((self: any, id: "LeaderstatsService", scopeKey: string?) -> LeaderstatsService) &
 	((self: any, id: "PlayerService", scopeKey: string?) -> PlayerService) &
 	((self: any, id: "ProfileService", scopeKey: string?) -> ProfileService) &
-	((self: any, id: "ZoneService", scopeKey: string?) -> ZoneService)
+	((self: any, id: "testeService", scopeKey: string?) -> testeService)
 
 export type ControllerImportFn =
 	((self: any, id: "NotificationController", scopeKey: string?) -> NotificationController) &
@@ -536,24 +349,16 @@ export type ControllerImportFn =
 	((self: any, id: "ScreenController", scopeKey: string?) -> ScreenController)
 
 export type ComponentImportFn =
-	((self: any, id: "BattleService", scopeKey: string?) -> BattleService) &
-	((self: any, id: "CombatService", scopeKey: string?) -> CombatService) &
-	((self: any, id: "EncounterService", scopeKey: string?) -> EncounterService) &
-	((self: any, id: "LeaderstatsService", scopeKey: string?) -> LeaderstatsService) &
 	((self: any, id: "PlayerService", scopeKey: string?) -> PlayerService) &
 	((self: any, id: "ProfileService", scopeKey: string?) -> ProfileService) &
-	((self: any, id: "ZoneService", scopeKey: string?) -> ZoneService)
+	((self: any, id: "testeService", scopeKey: string?) -> testeService)
 
 --> EXTEND FUNCTIONS
 
 export type ServiceExtendFn =
-	((self: any, id: "BattleService") -> BattleService) &
-	((self: any, id: "CombatService") -> CombatService) &
-	((self: any, id: "EncounterService") -> EncounterService) &
-	((self: any, id: "LeaderstatsService") -> LeaderstatsService) &
 	((self: any, id: "PlayerService") -> PlayerService) &
 	((self: any, id: "ProfileService") -> ProfileService) &
-	((self: any, id: "ZoneService") -> ZoneService)
+	((self: any, id: "testeService") -> testeService)
 
 export type ControllerExtendFn =
 	((self: any, id: "NotificationController") -> NotificationController) &
@@ -561,20 +366,14 @@ export type ControllerExtendFn =
 	((self: any, id: "ScreenController") -> ScreenController)
 
 export type ComponentExtendFn =
-	((self: any, id: "BushComponent") -> BushComponent) &
-	((self: any, id: "ZoneComponent") -> ZoneComponent) &
 	((self: any, id: "PlayerZoneComponent") -> PlayerZoneComponent) &
 	((self: any, id: "RegionComponent") -> RegionComponent)
 
 --> MODUX OVERLOADS
 export type ServiceFn =
-	((id: "BattleService", mode: Mode?) -> BattleService) &
-	((id: "CombatService", mode: Mode?) -> CombatService) &
-	((id: "EncounterService", mode: Mode?) -> EncounterService) &
-	((id: "LeaderstatsService", mode: Mode?) -> LeaderstatsService) &
 	((id: "PlayerService", mode: Mode?) -> PlayerService) &
 	((id: "ProfileService", mode: Mode?) -> ProfileService) &
-	((id: "ZoneService", mode: Mode?) -> ZoneService)
+	((id: "testeService", mode: Mode?) -> testeService)
 
 export type ControllerFn =
 	((id: "NotificationController", mode: Mode?) -> NotificationController) &
@@ -582,8 +381,6 @@ export type ControllerFn =
 	((id: "ScreenController", mode: Mode?) -> ScreenController)
 
 export type ComponentFn =
-	((id: "BushComponent", mode: Mode?) -> BushComponent) &
-	((id: "ZoneComponent", mode: Mode?) -> ZoneComponent) &
 	((id: "PlayerZoneComponent", mode: Mode?) -> PlayerZoneComponent) &
 	((id: "RegionComponent", mode: Mode?) -> RegionComponent)
 

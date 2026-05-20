@@ -17,7 +17,7 @@ local function requireAllIn(directories: directories)
 				local success, result = pcall(require, desc)
 				if not success then
 					local modulePath = desc:GetFullName()
-					error(`\n[Modux Loader Error] {modulePath}\n Error: {result}`, 0)
+					error(`\n[Modux Loader Error] {modulePath}\n Error: {result}, ModuleName: {desc.Name}`, 0)
 				end
 			end
 		end
