@@ -1,5 +1,5 @@
 [package]
-name = "hakor/behavior"
+name = "valf4/mergeyen"
 version = "0.1.0"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
@@ -12,6 +12,8 @@ lync = "axp3cter/lync@2.3.3"
 sera = "enzzyfrenzzy/sera@0.0.2"
 quickzone = "levnth/quickzone@0.0.1"
 
+react = "jsdotlua/react@17.2.1"
+react-roblox = "jsdotlua/react-roblox@17.2.1"
 
 [server-dependencies]
 profilestore = "ddashdev/profilestore@1.0.4"

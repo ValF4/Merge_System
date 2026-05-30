@@ -106,23 +106,23 @@ export type Network = {
 }
 
 --> SERVICES, CONTROLLERS & COMPONENTS
-export type NotificationController = {
+export type gridController = {
 	ID: string,
 	Type: Type,
-	Extend: (self: NotificationController, id: "ProfileController" | "ScreenController") -> NotificationController,
+	Extend: (self: gridController, id: string) -> gridController,
 	Import: ControllerImportFn,
-	OnInit: (self: NotificationController, cb: (self: NotificationController) -> ()) -> NotificationController,
-	OnStart: (self: NotificationController, cb: (self: NotificationController) -> ()) -> NotificationController,
-	OnSimulation: (self: NotificationController, cb: (self: NotificationController) -> (), frequency: Enum.StepFrequency?, priority: number?) -> NotificationController,
-	OnDestroy: (self: NotificationController, cb: (self: NotificationController) -> ()) -> NotificationController,
-	Tag: (self: NotificationController, tag: string) -> NotificationController,
-	ClassName: (self: NotificationController, className: string) -> NotificationController,
-	AttributeDefaults: (self: NotificationController, schema: { [string]: any }) -> NotificationController,
-	Children: (self: NotificationController, children: { string }) -> NotificationController,
-	GetAllComponents: (self: NotificationController, id: string) -> any,
-	GetComponent: (self: NotificationController, instance: Instance, id: string) -> any,
-	_doCleanup: (self: NotificationController) -> (),
-	New: (self: NotificationController, ID: string, Type: Type) -> NotificationController,
+	OnInit: (self: gridController, cb: (self: gridController) -> ()) -> gridController,
+	OnStart: (self: gridController, cb: (self: gridController) -> ()) -> gridController,
+	OnSimulation: (self: gridController, cb: (self: gridController) -> (), frequency: Enum.StepFrequency?, priority: number?) -> gridController,
+	OnDestroy: (self: gridController, cb: (self: gridController) -> ()) -> gridController,
+	Tag: (self: gridController, tag: string) -> gridController,
+	ClassName: (self: gridController, className: string) -> gridController,
+	AttributeDefaults: (self: gridController, schema: { [string]: any }) -> gridController,
+	Children: (self: gridController, children: { string }) -> gridController,
+	GetAllComponents: (self: gridController, id: string) -> any,
+	GetComponent: (self: gridController, instance: Instance, id: string) -> any,
+	_doCleanup: (self: gridController) -> (),
+	New: (self: gridController, ID: string, Type: Type) -> gridController,
 	Cleanup: <T>(self: any, task: T) -> T,
 	Network: Network,
 	Promise: Promise,
@@ -131,48 +131,25 @@ export type NotificationController = {
 	Attributes: { [string]: any },
 }
 
-export type ProfileController = {
+export type GridHandler = {
 	ID: string,
 	Type: Type,
-	Extend: (self: ProfileController, id: "NotificationController" | "ScreenController") -> ProfileController,
-	Import: ControllerImportFn,
-	OnInit: (self: ProfileController, cb: (self: ProfileController) -> ()) -> ProfileController,
-	OnStart: (self: ProfileController, cb: (self: ProfileController) -> ()) -> ProfileController,
-	OnSimulation: (self: ProfileController, cb: (self: ProfileController) -> (), frequency: Enum.StepFrequency?, priority: number?) -> ProfileController,
-	OnDestroy: (self: ProfileController, cb: (self: ProfileController) -> ()) -> ProfileController,
-	Tag: (self: ProfileController, tag: string) -> ProfileController,
-	ClassName: (self: ProfileController, className: string) -> ProfileController,
-	AttributeDefaults: (self: ProfileController, schema: { [string]: any }) -> ProfileController,
-	Children: (self: ProfileController, children: { string }) -> ProfileController,
-	GetAllComponents: (self: ProfileController, id: string) -> any,
-	GetComponent: (self: ProfileController, instance: Instance, id: string) -> any,
-	_doCleanup: (self: ProfileController) -> (),
-	New: (self: ProfileController, ID: string, Type: Type) -> ProfileController,
-	Cleanup: <T>(self: any, task: T) -> T,
-	Network: Network,
-	Promise: Promise,
-	GlobalClock: GlobalClock,
-	Signal: Signal,
-	Attributes: { [string]: any },
-}
-
-export type ScreenController = {
-	ID: string,
-	Type: Type,
-	Extend: (self: ScreenController, id: "NotificationController" | "ProfileController") -> ScreenController,
-	Import: ControllerImportFn,
-	OnInit: (self: ScreenController, cb: (self: ScreenController) -> ()) -> ScreenController,
-	OnStart: (self: ScreenController, cb: (self: ScreenController) -> ()) -> ScreenController,
-	OnSimulation: (self: ScreenController, cb: (self: ScreenController) -> (), frequency: Enum.StepFrequency?, priority: number?) -> ScreenController,
-	OnDestroy: (self: ScreenController, cb: (self: ScreenController) -> ()) -> ScreenController,
-	Tag: (self: ScreenController, tag: string) -> ScreenController,
-	ClassName: (self: ScreenController, className: string) -> ScreenController,
-	AttributeDefaults: (self: ScreenController, schema: { [string]: any }) -> ScreenController,
-	Children: (self: ScreenController, children: { string }) -> ScreenController,
-	GetAllComponents: (self: ScreenController, id: string) -> any,
-	GetComponent: (self: ScreenController, instance: Instance, id: string) -> any,
-	_doCleanup: (self: ScreenController) -> (),
-	New: (self: ScreenController, ID: string, Type: Type) -> ScreenController,
+	CreateGrid: (self: GridHandler, Player: Player) -> any,
+	initGridGame: (self: GridHandler, Player: Player) -> any,
+	Extend: (self: GridHandler, id: "PlayerService" | "ProfileService" | "PromptService") -> GridHandler,
+	Import: ServiceImportFn,
+	OnInit: (self: GridHandler, cb: (self: GridHandler) -> ()) -> GridHandler,
+	OnStart: (self: GridHandler, cb: (self: GridHandler) -> ()) -> GridHandler,
+	OnSimulation: (self: GridHandler, cb: (self: GridHandler) -> (), frequency: Enum.StepFrequency?, priority: number?) -> GridHandler,
+	OnDestroy: (self: GridHandler, cb: (self: GridHandler) -> ()) -> GridHandler,
+	Tag: (self: GridHandler, tag: string) -> GridHandler,
+	ClassName: (self: GridHandler, className: string) -> GridHandler,
+	AttributeDefaults: (self: GridHandler, schema: { [string]: any }) -> GridHandler,
+	Children: (self: GridHandler, children: { string }) -> GridHandler,
+	GetAllComponents: (self: GridHandler, id: string) -> any,
+	GetComponent: (self: GridHandler, instance: Instance, id: string) -> any,
+	_doCleanup: (self: GridHandler) -> (),
+	New: (self: GridHandler, ID: string, Type: Type) -> GridHandler,
 	Cleanup: <T>(self: any, task: T) -> T,
 	Network: Network,
 	Promise: Promise,
@@ -188,7 +165,7 @@ export type PlayerService = {
 	OnPlayerRemoved: (self: PlayerService, callback: (Player: Player) -> ()) -> (),
 	OnCharacterAdded: (self: PlayerService, callback: (Character: R6, Player: Player) -> ()) -> (),
 	OnCharacterRemoved: (self: PlayerService, callback: (Character: R6, Player: Player) -> ()) -> (),
-	Extend: (self: PlayerService, id: "ProfileService" | "testeService") -> PlayerService,
+	Extend: (self: PlayerService, id: "GridHandler" | "ProfileService" | "PromptService") -> PlayerService,
 	Import: ServiceImportFn,
 	OnInit: (self: PlayerService, cb: (self: PlayerService) -> ()) -> PlayerService,
 	OnStart: (self: PlayerService, cb: (self: PlayerService) -> ()) -> PlayerService,
@@ -222,11 +199,10 @@ export type ProfileService = {
 	ReplicateKey: (self: ProfileService, Player: Player, Key: DataTemplateKey) -> (),
 	Replicate: (self: ProfileService, Player: Player) -> any,
 	GetData: (self: ProfileService, Player: Player) -> DataTemplate?,
-	PrintData: boolean,
 	Profiles: { [Player]: any },
 	OnUpdateData: Signal,
 	OnUpdateKey: Signal,
-	Extend: (self: ProfileService, id: "PlayerService" | "testeService") -> ProfileService,
+	Extend: (self: ProfileService, id: "GridHandler" | "PlayerService" | "PromptService") -> ProfileService,
 	Import: ServiceImportFn,
 	OnInit: (self: ProfileService, cb: (self: ProfileService) -> ()) -> ProfileService,
 	OnStart: (self: ProfileService, cb: (self: ProfileService) -> ()) -> ProfileService,
@@ -248,141 +224,73 @@ export type ProfileService = {
 	Attributes: { [string]: any },
 }
 
-export type testeService = {
+export type PromptService = {
 	ID: string,
 	Type: Type,
-	PlayerService: PlayerService,
-	OnPlayerAdded: (self: testeService, callback: (Player: Player) -> ()) -> (),
-	OnPlayerRemoved: (self: testeService, callback: (Player: Player) -> ()) -> (),
-	OnCharacterAdded: (self: testeService, callback: (Character: R6, Player: Player) -> ()) -> (),
-	OnCharacterRemoved: (self: testeService, callback: (Character: R6, Player: Player) -> ()) -> (),
-	Extend: (self: testeService, id: "PlayerService" | "ProfileService") -> testeService,
+	GridHandler: GridHandler,
+	OnInit: (self: PromptService, callback: (...any) -> ()) -> (),
+	Extend: (self: PromptService, id: "GridHandler" | "PlayerService" | "ProfileService") -> PromptService,
 	Import: ServiceImportFn,
-	OnInit: (self: testeService, cb: (self: testeService) -> ()) -> testeService,
-	OnStart: (self: testeService, cb: (self: testeService) -> ()) -> testeService,
-	OnSimulation: (self: testeService, cb: (self: testeService) -> (), frequency: Enum.StepFrequency?, priority: number?) -> testeService,
-	OnDestroy: (self: testeService, cb: (self: testeService) -> ()) -> testeService,
-	Tag: (self: testeService, tag: string) -> testeService,
-	ClassName: (self: testeService, className: string) -> testeService,
-	AttributeDefaults: (self: testeService, schema: { [string]: any }) -> testeService,
-	Children: (self: testeService, children: { string }) -> testeService,
-	GetAllComponents: (self: testeService, id: string) -> any,
-	GetComponent: (self: testeService, instance: Instance, id: string) -> any,
-	_doCleanup: (self: testeService) -> (),
-	New: (self: testeService, ID: string, Type: Type) -> testeService,
+	OnStart: (self: PromptService, cb: (self: PromptService) -> ()) -> PromptService,
+	OnSimulation: (self: PromptService, cb: (self: PromptService) -> (), frequency: Enum.StepFrequency?, priority: number?) -> PromptService,
+	OnDestroy: (self: PromptService, cb: (self: PromptService) -> ()) -> PromptService,
+	Tag: (self: PromptService, tag: string) -> PromptService,
+	ClassName: (self: PromptService, className: string) -> PromptService,
+	AttributeDefaults: (self: PromptService, schema: { [string]: any }) -> PromptService,
+	Children: (self: PromptService, children: { string }) -> PromptService,
+	GetAllComponents: (self: PromptService, id: string) -> any,
+	GetComponent: (self: PromptService, instance: Instance, id: string) -> any,
+	_doCleanup: (self: PromptService) -> (),
+	New: (self: PromptService, ID: string, Type: Type) -> PromptService,
 	Cleanup: <T>(self: any, task: T) -> T,
 	Network: Network,
 	Promise: Promise,
 	GlobalClock: GlobalClock,
 	Signal: Signal,
 	Attributes: { [string]: any },
-}
-
-export type PlayerZoneComponent = {
-	ID: string,
-	Type: Type,
-	OnEnter: (self: PlayerZoneComponent, callback: callbackZone) -> (),
-	OnExit: (self: PlayerZoneComponent, callback: callbackZone) -> (),
-	ObserverPlayersInPart: (self: PlayerZoneComponent, config: PlayerZoneConfig) -> any,
-	Extend: (self: PlayerZoneComponent, id: "RegionComponent") -> PlayerZoneComponent,
-	Import: ComponentImportFn,
-	OnInit: (self: PlayerZoneComponent, cb: (self: PlayerZoneComponent) -> ()) -> PlayerZoneComponent,
-	OnStart: (self: PlayerZoneComponent, cb: (self: PlayerZoneComponent) -> ()) -> PlayerZoneComponent,
-	OnSimulation: (self: PlayerZoneComponent, cb: (self: PlayerZoneComponent) -> (), frequency: Enum.StepFrequency?, priority: number?) -> PlayerZoneComponent,
-	OnDestroy: (self: PlayerZoneComponent, cb: (self: PlayerZoneComponent) -> ()) -> PlayerZoneComponent,
-	Tag: (self: PlayerZoneComponent, tag: string) -> PlayerZoneComponent,
-	ClassName: (self: PlayerZoneComponent, className: string) -> PlayerZoneComponent,
-	AttributeDefaults: (self: PlayerZoneComponent, schema: { [string]: any }) -> PlayerZoneComponent,
-	Children: (self: PlayerZoneComponent, children: { string }) -> PlayerZoneComponent,
-	GetAllComponents: (self: PlayerZoneComponent, id: string) -> any,
-	GetComponent: (self: PlayerZoneComponent, instance: Instance, id: string) -> any,
-	_doCleanup: (self: PlayerZoneComponent) -> (),
-	New: (self: PlayerZoneComponent, ID: string, Type: Type) -> PlayerZoneComponent,
-	Cleanup: <T>(self: any, task: T) -> T,
-	Network: Network,
-	Promise: Promise,
-	GlobalClock: GlobalClock,
-	Signal: Signal,
-	Attributes: { [string]: any },
-	Instance: Instance,
-}
-
-export type RegionComponent = {
-	ID: string,
-	Type: Type,
-	OnEnter: (self: RegionComponent, callback: callbackZone) -> (),
-	OnExit: (self: RegionComponent, callback: callbackZone) -> (),
-	ObserverPlayersInPart: (self: RegionComponent, config: PlayerZoneConfig) -> any,
-	Extend: (self: RegionComponent, id: "PlayerZoneComponent") -> RegionComponent,
-	Import: ComponentImportFn,
-	OnInit: (self: RegionComponent, cb: (self: RegionComponent) -> ()) -> RegionComponent,
-	OnStart: (self: RegionComponent, cb: (self: RegionComponent) -> ()) -> RegionComponent,
-	OnSimulation: (self: RegionComponent, cb: (self: RegionComponent) -> (), frequency: Enum.StepFrequency?, priority: number?) -> RegionComponent,
-	OnDestroy: (self: RegionComponent, cb: (self: RegionComponent) -> ()) -> RegionComponent,
-	Tag: (self: RegionComponent, tag: string) -> RegionComponent,
-	ClassName: (self: RegionComponent, className: string) -> RegionComponent,
-	AttributeDefaults: (self: RegionComponent, schema: { [string]: any }) -> RegionComponent,
-	Children: (self: RegionComponent, children: { string }) -> RegionComponent,
-	GetAllComponents: (self: RegionComponent, id: string) -> any,
-	GetComponent: (self: RegionComponent, instance: Instance, id: string) -> any,
-	_doCleanup: (self: RegionComponent) -> (),
-	New: (self: RegionComponent, ID: string, Type: Type) -> RegionComponent,
-	Cleanup: <T>(self: any, task: T) -> T,
-	Network: Network,
-	Promise: Promise,
-	GlobalClock: GlobalClock,
-	Signal: Signal,
-	Attributes: { [string]: any },
-	Instance: Instance,
 }
 
 --> IMPORT FUNCTIONS
 
 export type ServiceImportFn =
+	((self: any, id: "GridHandler", scopeKey: string?) -> GridHandler) &
 	((self: any, id: "PlayerService", scopeKey: string?) -> PlayerService) &
 	((self: any, id: "ProfileService", scopeKey: string?) -> ProfileService) &
-	((self: any, id: "testeService", scopeKey: string?) -> testeService)
+	((self: any, id: "PromptService", scopeKey: string?) -> PromptService)
 
 export type ControllerImportFn =
-	((self: any, id: "NotificationController", scopeKey: string?) -> NotificationController) &
-	((self: any, id: "ProfileController", scopeKey: string?) -> ProfileController) &
-	((self: any, id: "ScreenController", scopeKey: string?) -> ScreenController)
+	((self: any, id: "gridController", scopeKey: string?) -> gridController)
 
 export type ComponentImportFn =
+	((self: any, id: "GridHandler", scopeKey: string?) -> GridHandler) &
 	((self: any, id: "PlayerService", scopeKey: string?) -> PlayerService) &
 	((self: any, id: "ProfileService", scopeKey: string?) -> ProfileService) &
-	((self: any, id: "testeService", scopeKey: string?) -> testeService)
+	((self: any, id: "PromptService", scopeKey: string?) -> PromptService)
 
 --> EXTEND FUNCTIONS
 
 export type ServiceExtendFn =
+	((self: any, id: "GridHandler") -> GridHandler) &
 	((self: any, id: "PlayerService") -> PlayerService) &
 	((self: any, id: "ProfileService") -> ProfileService) &
-	((self: any, id: "testeService") -> testeService)
+	((self: any, id: "PromptService") -> PromptService)
 
 export type ControllerExtendFn =
-	((self: any, id: "NotificationController") -> NotificationController) &
-	((self: any, id: "ProfileController") -> ProfileController) &
-	((self: any, id: "ScreenController") -> ScreenController)
+	((self: any, id: "gridController") -> gridController)
 
-export type ComponentExtendFn =
-	((self: any, id: "PlayerZoneComponent") -> PlayerZoneComponent) &
-	((self: any, id: "RegionComponent") -> RegionComponent)
+export type ComponentExtendFn = (self: any, id: string) -> any
 
 --> MODUX OVERLOADS
 export type ServiceFn =
+	((id: "GridHandler", mode: Mode?) -> GridHandler) &
 	((id: "PlayerService", mode: Mode?) -> PlayerService) &
 	((id: "ProfileService", mode: Mode?) -> ProfileService) &
-	((id: "testeService", mode: Mode?) -> testeService)
+	((id: "PromptService", mode: Mode?) -> PromptService)
 
 export type ControllerFn =
-	((id: "NotificationController", mode: Mode?) -> NotificationController) &
-	((id: "ProfileController", mode: Mode?) -> ProfileController) &
-	((id: "ScreenController", mode: Mode?) -> ScreenController)
+	((id: "gridController", mode: Mode?) -> gridController)
 
-export type ComponentFn =
-	((id: "PlayerZoneComponent", mode: Mode?) -> PlayerZoneComponent) &
-	((id: "RegionComponent", mode: Mode?) -> RegionComponent)
+export type ComponentFn = (id: string, mode: Mode?) -> any
 
 -- END AUTO-GENERATED
 
